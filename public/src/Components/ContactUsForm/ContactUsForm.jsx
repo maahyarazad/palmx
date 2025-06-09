@@ -74,7 +74,7 @@ const ContactForm = ({ siteData, sectionId }) => {
         <section className="container py-5 request-form-section" id={sectionId}>
 
             <div className="row">
-                <div className="col-12 col-md-6 p-4">
+                <div className="col-12 col-md-6 p-lg-4 p-2">
 
                     <h2 className="h3 fw-bold mb-2 lets-start">{siteData.h2}</h2>
                     <p className="fw-semibold mb-3">{siteData.p}</p>
@@ -92,7 +92,7 @@ const ContactForm = ({ siteData, sectionId }) => {
                         </a>
                     </p>
                 </div>
-                <div className="col-12 col-md-6 p-4">
+                <div className="col-12 col-md-6 p-2">
 
                     <Formik
                         initialValues={initialValues}
@@ -105,7 +105,7 @@ const ContactForm = ({ siteData, sectionId }) => {
 
                                 <CustomInput name="email" type="email" label={siteData.form.emailLabel} placeholder="name@company.com" />
 
-                                <CustomTextarea name="message" rows={5} label={siteData.form.messageLabel} placeholder="Describe your idea" />
+                                <CustomTextarea name="message" rows={3} label={siteData.form.messageLabel} placeholder="Describe your idea" />
 
                                 <div className="d-flex justify-content-between mb-3">
                                     {/* <label htmlFor="attachment" className="form-label">Attach Files</label> */}

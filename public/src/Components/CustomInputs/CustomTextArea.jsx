@@ -7,10 +7,10 @@ const CustomTextarea = ({ label, ...props }) => {
     const hasError = meta.touched && meta.error;
 
     return (
-        <div className="row align-items-center mb-3">
+        <div className="row mb-3">
 
-            <div className="col-12 col-md-2 d-flex justify-content-md-end mb-2 mb-md-0">
-                <label htmlFor={props.id || props.name} className="form-label mb-0 text-md-end text-nowrap">
+            <div className="col-12 col-md-2 d-flex justify-content-md-start align-items-top mb-2 mb-md-0">
+                <label htmlFor={props.id || props.name} className="form-label mb-0 text-md-start text-nowrap">
                     {label}
                 </label>
             </div>

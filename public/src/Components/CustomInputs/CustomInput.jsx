@@ -8,7 +8,7 @@ const CustomInput = ({ label, ...props }) => {
     return (
         <div className="row align-items-center mb-3">
 
-            <div className="col-12 col-md-2 d-flex justify-content-md-end mb-2 mb-md-0">
+            <div className="col-12 col-md-2 d-flex justify-content-md-start mb-2 mb-md-0">
                 <label htmlFor={props.id || props.name} className="form-label mb-0 text-md-end text-nowrap">
                     {label}
                 </label>
