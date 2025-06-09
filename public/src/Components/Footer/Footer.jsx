@@ -47,7 +47,7 @@ const Footer = ({ footerData }) => {
                 <div className="footer-social">
                     <h4>Social Meida</h4>
                     <ul>
-                        {footerData.socialLinks.map((social) => {
+                        {/* {footerData.socialLinks.map((social) => {
                             const Icon = getSocialIcon(social.platform);
 
                             return (
@@ -58,13 +58,13 @@ const Footer = ({ footerData }) => {
                                     </a>
                                 </li>
                             );
-                        })}
+                        })} */}
                     </ul>
                 </div>
                 <div className="footer-contact">
                     <h4>Contact Us</h4>
-                    <p>Email: <a href={`mailto:${footerData.contact.email}`}>{footerData.contact.email}</a></p>
-                    <p>Phone: <a href={`tel:${footerData.contact.phone}`}>{footerData.contact.phone}</a></p>
+                    {/* <p>Email: <a href={`mailto:${footerData.contact.email}`}>{footerData.contact.email}</a></p>
+                    <p>Phone: <a href={`tel:${footerData.contact.phone}`}>{footerData.contact.phone}</a></p> */}
                 </div>
             </div>
         </footer>

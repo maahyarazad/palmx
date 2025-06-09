@@ -10,7 +10,7 @@ import '@animated-burgers/burger-rotate/dist/styles.css'
 import logo from '../../Assets/palmx-logo.jpeg'
 
 
-const Navbar = ({ companyName, navbarLinks, onLanguageChange, currentlanguage }) => {
+const Navbar = ({ companyName, navbarLinks, siteData , onLanguageChange, currentlanguage }) => {
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -18,7 +18,7 @@ const Navbar = ({ companyName, navbarLinks, onLanguageChange, currentlanguage })
     const [language, setLanguage] = useState(currentlanguage);
     const [scrolled, setScrolled] = useState(false);
     const [shouldScroll, setShouldScroll] = useState(false);
-   const [pendingScrollKey, setPendingScrollKey] = useState(null);
+    const [pendingScrollKey, setPendingScrollKey] = useState(null);
    
     // Toggle the mobile menu
     const toggleMenu = () => setMenuOpen(!menuOpen);
@@ -159,7 +159,7 @@ const Navbar = ({ companyName, navbarLinks, onLanguageChange, currentlanguage })
                     </label>
                     <span className="lang-label">{language}</span>
                 </div>
-                <button className="btn btn-primary-contrast" onClick={GetStarted} type="button">Get Started Now!</button>
+                <button className="btn btn-primary-contrast" onClick={GetStarted} type="button">{siteData.getStartedNow}</button>
             </div>
 
             {/* Slide-out Mobile Menu */}
@@ -183,7 +183,7 @@ const Navbar = ({ companyName, navbarLinks, onLanguageChange, currentlanguage })
                     className="get-started mobile"
                     onClick={GetStarted}
                 >
-                    Get Started Now!
+                    {siteData.getStartedNow}
                 </button>
             </div>
         </nav>

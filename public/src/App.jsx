@@ -24,6 +24,7 @@ const App = () => {
     useEffect(() => {
         axios.get(`${server_endpoint}/api/site-data?lang=${language}`)
             .then((response) => {
+
                 setSiteData(response.data);
 
             })
@@ -82,6 +83,7 @@ const App = () => {
         
             <Navbar onLanguageChange={handleLanguageChange} 
                             navbarLinks={siteData.navLinks}
+                            siteData={siteData.getStarted}
                             currentlanguage={language} 
                             companyName={siteData.companyName}/>
             <ParticleJsContainer></ParticleJsContainer>

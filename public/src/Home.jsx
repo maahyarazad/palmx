@@ -49,6 +49,7 @@ const Home = ({ siteData }) => {
                     id={`home-slide-${slider.id}`}
                     title={slider.title}
                     text={slider.text}
+                    siteData={siteData.getStarted}
                     // image={slider.image}
                     className={visibleSliders.includes(index) ? 'show' : ''}
                     ref={(el) => (silderRefs.current[slider.id - 1] = el)}
@@ -60,7 +61,7 @@ const Home = ({ siteData }) => {
             <div className="container mx-auto px-4 py-4" id="section-1">
                 <ServiceGrid
                     data={siteData.serviceCards_1}
-                    containerTitle={"Industries we help"}
+                    containerTitle={siteData.serviceCards_1_title}
                     serviceKeyName={"serviceCards_1"}
                     gridClass={"col-12 col-sm-6 col-lg-4 mb-4"} />
             </div>
@@ -76,12 +77,12 @@ const Home = ({ siteData }) => {
             <div className="container mx-auto px-4 py-4">
                 <ServiceGrid
                     data={siteData.serviceCards_2}
-                    containerTitle={"Advanced tech we work with"}
+                    containerTitle={siteData.serviceCards_2_title}
                     serviceKeyName={"serviceCards_2"}
                     gridClass={"col-12 col-sm-6 col-lg-6 mb-4"} />
             </div>
 
-            <ContactUsForm />
+            <ContactUsForm siteData={siteData.ContactUs}/>
         </div>
     );
 };

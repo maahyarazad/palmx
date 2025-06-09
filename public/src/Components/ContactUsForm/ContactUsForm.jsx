@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -9,7 +9,9 @@ import { Paperclip } from 'lucide-react';
 import { toast } from 'react-toastify';
 import { IoMdClose } from "react-icons/io";
 const server_endpoint = process.env.REACT_APP_API;
-const ContactForm = ({ sectionId }) => {
+const ContactForm = ({ siteData, sectionId }) => {
+
+
     const fileInputRef = useRef(null);
     const [attachedFileName, setAttachedFileName] = useState("");
     const initialValues = {
@@ -74,17 +76,17 @@ const ContactForm = ({ sectionId }) => {
             <div className="row">
                 <div className="col-12 col-md-6 p-4">
 
-                    <h2 className="h3 fw-bold mb-2 lets-start">Let’s start</h2>
-                    <p className="fw-semibold mb-3">What’s next</p>
+                    <h2 className="h3 fw-bold mb-2 lets-start">{siteData.h2}</h2>
+                    <p className="fw-semibold mb-3">{siteData.p}</p>
                     <ul className="mb-4 ps-3 list-unstyled">
-                        <li>1. Share your requirements</li>
-                        <li>2. Analyze them with our experts</li>
-                        <li>3. Get a detailed proposal</li>
-                        <li>4. Kick off the project</li>
+                        {siteData.steps.map((step, index) => (
+                        <li key={index}>{step}</li>
+                        ))}
+                        
                     </ul>
 
                     <p className="mb-4">
-                        If you have any questions, email us at
+                        {siteData.questionText}
                         <a href="mailto:info@oursite.com" className="ms-1 text-decoration-underline text-primary">
                             info@oursite.com
                         </a>
@@ -99,11 +101,11 @@ const ContactForm = ({ sectionId }) => {
                     >
                         {({ setFieldValue, isSubmitting }) => (
                             <Form className="mb-5">
-                                <CustomInput name="name" type="text" label="My Name*" placeholder="John Smith" />
+                                <CustomInput name="name" type="text" label={siteData.form.nameLabel} placeholder="John Smith" />
 
-                                <CustomInput name="email" type="email" label="Email Address*" placeholder="name@company.com" />
+                                <CustomInput name="email" type="email" label={siteData.form.emailLabel} placeholder="name@company.com" />
 
-                                <CustomTextarea name="message" rows={5} label="Message*" placeholder="Describe your idea" />
+                                <CustomTextarea name="message" rows={5} label={siteData.form.messageLabel} placeholder="Describe your idea" />
 
                                 <div className="d-flex justify-content-between mb-3">
                                     {/* <label htmlFor="attachment" className="form-label">Attach Files</label> */}
@@ -122,7 +124,7 @@ const ContactForm = ({ sectionId }) => {
                                     <div onClick={triggerFileInput}
                                         className="attachment-button">
                                         <Paperclip size={18} />
-                                        Attach File
+                                         {siteData.form.attachFile}
 
                                     </div>
 
@@ -130,7 +132,7 @@ const ContactForm = ({ sectionId }) => {
                                     <ErrorMessage name="attachment" component="span" className="text-danger d-block mt-1" />
 
                                     <button type="submit" className="btn btn-primary-contrast" style={{ backgroundColor: 'var(--primary-color)' }} disabled={isSubmitting}>
-                                        {isSubmitting ? "Sending..." : "Send Your Request"}
+                                        {isSubmitting ? "Sending..." : siteData.sendYourRequest}
                                     </button>
                                 </div>
 
@@ -138,7 +140,7 @@ const ContactForm = ({ sectionId }) => {
                                     {attachedFileName && (
                                         <div className="attached-file-name text-white d-flex align-items-center" style={{ marginTop: "0.5em" }}>
                                             <span>
-                                                Selected file: <strong>{attachedFileName}</strong>
+                                                {siteData.form.selectedFile}: <strong>{attachedFileName}</strong>
                                             </span>
                                             
                                             <button
@@ -163,13 +165,13 @@ const ContactForm = ({ sectionId }) => {
                                 </div>
 
                                 <p className="form-text mt-3">
-                                    By submitting, you agree to our{" "}
+                                     {siteData.privacy}{" "}
                                     <a
                                         href="https://google.com"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="text-decoration-underline">
-                                        Privacy Policy
+                                        {siteData.privacyPolicy}
                                     </a>.
                                 </p>
                             </Form>

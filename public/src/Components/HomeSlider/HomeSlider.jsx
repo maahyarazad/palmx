@@ -4,8 +4,7 @@ import './HomeSlider.css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
-const HomeSlider = forwardRef(({ id, title, text, image, className }, ref) => {
-
+const HomeSlider = forwardRef(({ id, title, text, siteData ,image, className }, ref) => {
 
     const GetStarted = (e) => {
         var element = document.querySelector("section.request-form-section");
@@ -34,7 +33,7 @@ const HomeSlider = forwardRef(({ id, title, text, image, className }, ref) => {
                     <button className="btn btn-lg btn-primary-contrast"
                         onClick={GetStarted}
                     >
-                        Get Started</button>
+                        {siteData.getStarted}</button>
                 </div>
             </div>
         </div>

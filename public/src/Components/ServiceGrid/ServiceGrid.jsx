@@ -41,7 +41,7 @@ const ServiceGrid = ({ data, containerTitle, serviceKeyName, gridClass }) => {
         <div className="p-0 p-md-4">
             <h2 className="py-4 text-center service-grid-title">
                 <span className="highlighted-word">{containerTitle.split(" ")[0]}</span>{" "}
-                {containerTitle.split(" ")[1]}{" "}
+                {/* {containerTitle.split(" ")[1]}{" "} */}
                 {containerTitle.split(" ").slice(2).join(" ")}
             </h2>
             <div className="row service-card-container">
