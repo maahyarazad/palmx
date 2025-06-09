@@ -1,0 +1,11 @@
+
+.Toastify__toast-container {
+  .Toastify__toast{
+    font-size: 14px  !important;
+    font-weight: 400 !important;
+    svg{
+      fill: var(--primary-contrast-color);
+    }
+
+  }
+}

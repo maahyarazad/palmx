@@ -1,0 +1,139 @@
+/* General Footer Styles */
+.footer {
+  background-color: white;
+  padding: 60px 40px;
+  font-family: Arial, sans-serif;
+  color: #333;
+  border-top: 1px solid #ddd;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.logo-container-footer {
+  max-width: 130px;
+  max-height: 130px;
+  overflow: hidden;
+
+  display: inline-block;
+}
+
+.logo-container-footer .footer-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transform: scale(2);
+  transition: transform 0.3s ease;
+}
+
+.footer-about {
+  font-size: 14px;
+  color: #666;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+.footer-section h4 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #111;
+}
+
+.footer-links ul,
+.footer-social ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li,
+.footer-social li {
+  margin-bottom: 10px;
+}
+
+.footer-nav a,
+.footer-links a,
+.footer-social a {
+  text-decoration: none !important;
+  color: var(--primary-color);
+  font-size: 14px;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer-nav a:hover,
+.footer-links a:hover,
+.footer-social a:hover {
+  color: var(--primary-contrast-color);
+}
+
+.footer-social a i {
+  margin-right: 8px;
+}
+
+.footer-contact p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.footer-contact a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-contact a:hover {
+  color: var(--primary-contrast-color) !important;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 13px;
+  margin-top: 40px;
+}
+
+/* Responsive */
+@media screen and (max-width: 992px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    padding: 10px;
+  }
+
+  .footer .footer-container .footer-company {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

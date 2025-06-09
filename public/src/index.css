@@ -1,0 +1,40 @@
+:root {
+  --primary-color: #191919;
+  --primary-contrast-color: #FB6162;
+  --primary-contrast-color-1: #FFD166;
+  --logo-secondary-collor: #5B2330;
+  --secondary-contracts-color: #06D6A0;
+  --third-contracts-color: #EF476F;
+}
+
+body {
+  margin: 0;
+  font-family: 'FigtreeVF', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+.btn-primary-contrast{
+  background-color: var(--primary-contrast-color) !important;
+  color: rgb(23, 23, 23) !important;
+  transition: all 100ms ease-in-out;
+}
+
+.btn-primary-contrast:hover{
+  background-color: rgb(23, 23, 23) !important;
+  color: white !important;
+  box-shadow: -2px 3px 8px white;
+    transition: all 100ms ease-in-out;
+}
+
+
+
+
+
+
