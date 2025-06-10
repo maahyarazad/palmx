@@ -32,7 +32,7 @@ const Footer = ({ footerData }) => {
                     <div className='logo-container-footer'>
                         <img src={logo} alt="Company Logo" className="footer-logo" />
                     </div>
-                    <p>{footerData.about}</p>
+                    
                 </div>
                 {/* <div className="footer-social">
                     <h4>Quick Links</h4>
@@ -45,7 +45,7 @@ const Footer = ({ footerData }) => {
                     </ul>
                 </div> */}
                 <div className="footer-social">
-                    <h4>Social Meida</h4>
+                    {/* <h4>Social Meida</h4> */}
                     <ul>
                         {/* {footerData.socialLinks.map((social) => {
                             const Icon = getSocialIcon(social.platform);
@@ -61,8 +61,9 @@ const Footer = ({ footerData }) => {
                         })} */}
                     </ul>
                 </div>
-                <div className="footer-contact">
-                    <h4>Contact Us</h4>
+                <div className="align-self-center d-flex footer-contact">
+                    <p>{footerData.about}</p>
+                    {/* <h4>Contact Us</h4> */}
                     {/* <p>Email: <a href={`mailto:${footerData.contact.email}`}>{footerData.contact.email}</a></p>
                     <p>Phone: <a href={`tel:${footerData.contact.phone}`}>{footerData.contact.phone}</a></p> */}
                 </div>
