@@ -34,6 +34,8 @@ const ParticleJsContainer = ({ children }) => {
 
         updateBackground();
         window.addEventListener("resize", updateBackground);
+
+        return () => window.removeEventListener("resize", updateBackground);
     }, []);
 
 
