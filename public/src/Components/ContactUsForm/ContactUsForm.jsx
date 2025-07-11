@@ -64,7 +64,8 @@ const ContactForm = ({ siteData, sectionId }) => {
             setAttachedFileName("");;
             resetForm();
         } catch (error) {
-            toast.error(error)
+            debugger;
+            toast.error(error.message)
         } finally {
             setSubmitting(false);
         }
@@ -87,8 +88,8 @@ const ContactForm = ({ siteData, sectionId }) => {
 
                     <p className="mb-4">
                         {siteData.questionText}
-                        <a href="mailto:info@oursite.com" className="ms-1 text-decoration-underline text-primary">
-                            info@oursite.com
+                        <a href="mailto:hallo@palm-x.com" className="ms-1 text-decoration-underline text-primary">
+                            hallo@palm-x.com
                         </a>
                     </p>
                 </div>
@@ -165,14 +166,15 @@ const ContactForm = ({ siteData, sectionId }) => {
                                 </div>
 
                                 <p className="form-text mt-3">
-                                     {siteData.privacy}{" "}
-                                    <a
-                                        href="https://google.com"
+                                     {siteData.privacy}
+                                    {/* <a
+                                        onClick={()=> console.log()}
+                                        href=""
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="text-decoration-underline">
-                                        {siteData.privacyPolicy}
-                                    </a>.
+                                        
+                                    </a>. */}
                                 </p>
                             </Form>
                         )}

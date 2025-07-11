@@ -13,6 +13,8 @@ const ShowCases = () => {
     const [showIframe, setShowIframe] = useState(false);
     const iframeRef = useRef(null);
     const [frameSrc, setFrameSrc] = useState("");
+   
+
     const handleOpen = (e) => {
         const srcValue = e.currentTarget.getAttribute("src");
 
@@ -46,10 +48,8 @@ const ShowCases = () => {
     return (
         <>
 
-            <div className="row w-100 show-case">
-
-                <div className="col-6">
-
+            <div className="row w-100 show-case justify-self-center">
+                                   <div className="col-lg-6 col-12">
                     <div className="show-case-container d-flex flex-column">
                         <img src={WhiteReward} alt="White Reward" />
                         <div className="info-panel d-flex">
@@ -58,14 +58,14 @@ const ShowCases = () => {
                                 <p className="text-dark">
                                     <strong>
 
-                                       Website
+                                        Website
                                     </strong>
-                                    </p>
+                                </p>
                                 <a onClick={(e) => handleOpen(e)} className="a-button" src="https://www.whitereward.com/">
-                                     <strong>
+                                    <strong>
 
-                                    White Reward
-                                     </strong>
+                                        White Reward
+                                    </strong>
                                 </a>
                             </div>
 
@@ -80,7 +80,7 @@ const ShowCases = () => {
                     </div>
 
                 </div>
-                <div className="col-6">
+                <div className="col-lg-6 col-12">
                     <div className="show-case-container d-flex flex-column">
                         <img src={Angel} alt="Angel Bureau" />
                         <div className="info-panel d-flex">
@@ -89,14 +89,14 @@ const ShowCases = () => {
                                 <p className="text-dark">
                                     <strong>
 
-                                       Website
+                                        Website
                                     </strong>
-                                    </p>
+                                </p>
                                 <a onClick={(e) => handleOpen(e)} className="a-button" src="https://www.angels-bureau.com/">
-                                     <strong>
+                                    <strong>
 
-                                    Angel Bureau
-                                     </strong>
+                                        Angel Bureau
+                                    </strong>
                                 </a>
 
                             </div>
@@ -112,7 +112,7 @@ const ShowCases = () => {
                     </div>
                 </div>
 
-                <div className="col-6">
+                <div className="col-lg-6 col-12">
                     <div className="show-case-container d-flex flex-column">
                         <img src={difa} alt="DIFA" />
                         <div className="info-panel d-flex">
@@ -121,14 +121,14 @@ const ShowCases = () => {
                                 <p className="text-dark">
                                     <strong>
 
-                                       Website
+                                        Website
                                     </strong>
-                                    </p>
+                                </p>
                                 <a onClick={(e) => handleOpen(e)} className="a-button" src="https://https://www.difa.agency/">
-                                     <strong>
+                                    <strong>
 
-                                   DIFA
-                                     </strong>
+                                        DIFA
+                                    </strong>
                                 </a>
 
                             </div>
@@ -143,23 +143,23 @@ const ShowCases = () => {
 
                     </div>
                 </div>
-                <div className="col-6">
+                <div className="col-lg-6 col-12">
                     <div className="show-case-container d-flex flex-column">
                         <img src={expert} alt="Expert Circle" />
                         <div className="info-panel d-flex">
                             <div className="align-self-end">
 
-                                 <p className="text-dark">
+                                <p className="text-dark">
                                     <strong>
 
-                                       Website
+                                        Website
                                     </strong>
-                                    </p>
+                                </p>
                                 <a onClick={(e) => handleOpen(e)} className="a-button" src="https://www.german-emirates-club.com/gec-events/expert">
-                                     <strong>
+                                    <strong>
 
-                                   Expert Circle
-                                     </strong>
+                                        Expert Circle
+                                    </strong>
                                 </a>
 
                             </div>
@@ -175,24 +175,24 @@ const ShowCases = () => {
                     </div>
                 </div>
 
-                
-                <div className="col-6">
+
+                <div className="col-lg-6 col-12">
                     <div className="show-case-container d-flex flex-column">
                         <img src={gec_mobile} alt="GEC Mobile" />
                         <div className="info-panel d-flex">
                             <div className="align-self-end">
 
-                                 <p className="text-dark">
+                                <p className="text-dark">
                                     <strong>
 
                                         Mobile Application
                                     </strong>
-                                    </p>
+                                </p>
                                 <a className="a-button" src="https://play.google.com/store/apps/details?id=com.buenapublica.GECRewards&hl=en">
-                                 <strong>
+                                    <strong>
 
-                                   GEC Mobile
-                                 </strong>
+                                        GEC Mobile
+                                    </strong>
                                 </a>
 
                             </div>
@@ -207,7 +207,7 @@ const ShowCases = () => {
 
                     </div>
                 </div>
-                <div className="col-6">
+                <div className="col-lg-6 col-12">
                     <div className="show-case-container d-flex flex-column">
                         <img src={ifza} alt="IFZA Elite" />
                         <div className="info-panel d-flex">
@@ -217,12 +217,12 @@ const ShowCases = () => {
                                     <strong>
                                         Mobile Application
                                     </strong>
-                                    </p>
-                                <a  className="a-button" src="https://play.google.com/store/apps/details?id=com.root.ifza&hl=en">
-                                <strong>
+                                </p>
+                                <a className="a-button" src="https://play.google.com/store/apps/details?id=com.root.ifza&hl=en">
+                                    <strong>
 
-                                   IFZA Elite
-                                </strong>
+                                        IFZA Elite
+                                    </strong>
                                 </a>
 
                             </div>
@@ -248,8 +248,8 @@ const ShowCases = () => {
                     className={`fullscreen-iframe ${showIframe ? "visible" : ""}`}
                 />
                 <button className={`close-iframe ${showIframe ? "visible" : ""}`} onClick={handleClose}>
-                        <IoMdClose size={20} />
-                    </button>
+                    <IoMdClose size={20} />
+                </button>
             </div>
 
         </>

@@ -12,9 +12,27 @@ const port = process.env.PORT || 5000;
 const mime = require('mime-types');
 const generateQRWithText = require('./services/qrGenerator');
 
-const { sendRequestConfirmationEmail } = require('./services/emailService');
+const { sendRequestConfirmationEmail, sendAdminNotificationEmail } = require('./services/emailService');
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, "public")));
+
+
+// Multer
+const uploadDir = path.join(__dirname, '/uploads');
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, uploadDir);
+  },
+  filename: function (req, file, cb) {
+    const ext = path.extname(file.originalname);
+    const uniqueName = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, uniqueName + ext);
+  }
+});
+
+const upload = multer({ storage });
+
 
 //Route to serve your main HTML file
 app.get("/", (req, res) => {
@@ -51,9 +69,7 @@ app.get('/api/site-data', (req, res) => {
 });
 
 
-const upload = multer({
-    dest: path.join(__dirname, "/uploads")
-})
+
 
 
 app.post('/api/contact-us', upload.single('attachment'), async (req, res) => {
@@ -93,6 +109,8 @@ app.post('/api/contact-us', upload.single('attachment'), async (req, res) => {
 
         await sendRequestConfirmationEmail(newEntry);
 
+        await sendAdminNotificationEmail(newEntry);
+
         return res.status(201).json({ message: 'Your request created. Thank you for reaching out to us.' });
 
     } catch (err) {
@@ -105,6 +123,11 @@ app.post('/api/contact-us', upload.single('attachment'), async (req, res) => {
 
 app.use((req, res, next) => {
   res.status(404).send('Not found');
+});
+
+app.use((req, res, next) => {
+    console.log(`Received request for: ${req.url}`);
+    next();
 });
 
 app.listen(port, () => {

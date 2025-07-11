@@ -272,7 +272,7 @@
       "4. Kick off the project"
     ], 
     "questionText":" If you have any questions, email us at", 
-    "privacy":"By submitting, you agree to our",
+    "privacy":"By submitting, you agree to the collection of your name and email for communication purposes.",
     "privacyPolicy" : "Privacy Policy",
     "form":{
       "nameLabel":"My Name",
@@ -328,7 +328,7 @@
       }
     ],
     "contact": {
-      "email": "contact@techsolutions.com",
+      "email": "hallo@palm-x.com",
       "phone": "+1 123-456-7890"
     }
   }

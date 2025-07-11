@@ -1,0 +1,45 @@
+$primary: var(--primary-contrast-color);
+
+.Toastify__toast-container {
+
+  .Toastify__toast {
+    font-size: 1.1rem;
+    font-weight: 400 !important;
+    min-width: 400px ;
+    svg {
+      fill: $primary;
+      font-size: 1.5rem;
+    }
+  }
+
+  .Toastify__close-button.Toastify__close-button--light {
+    font-size: 2rem;
+    padding-right: 5px;
+
+    > svg {
+      fill: black
+    }
+  }
+}
+
+
+.about{
+  line-height: 3;
+}
+
+@media (max-width: 768px) {
+  .about{
+  line-height: 1;
+}
+}
+
+.show-card {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.6s ease;
+  & .visible {
+    opacity: 1;
+    transform: translateX(0);
+    }
+}
+

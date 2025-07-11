@@ -27,10 +27,13 @@ const Footer = ({ footerData }) => {
 
     return (
         <footer className="footer">
-            <div className="footer-container">
-                <div className="footer-company">
-                    <div className='logo-container-footer'>
-                        <img src={logo} alt="Company Logo" className="footer-logo" />
+            <div className="row">
+                <div className="col-12 col-lg-6">
+                    <div className='d-flex justify-content-lg-center justify-content-start ps-lg-0 ps-5'>
+
+                        <div className='logo-container-footer'>
+                            <img src={logo} alt="Company Logo" className="footer-logo" />
+                        </div>
                     </div>
                     
                 </div>
@@ -44,10 +47,10 @@ const Footer = ({ footerData }) => {
                         ))}
                     </ul>
                 </div> */}
-                <div className="footer-social">
-                    {/* <h4>Social Meida</h4> */}
+                {/* <div className="footer-social">
+                    <h4>Social Meida</h4>
                     <ul>
-                        {/* {footerData.socialLinks.map((social) => {
+                        {footerData.socialLinks.map((social) => {
                             const Icon = getSocialIcon(social.platform);
 
                             return (
@@ -58,14 +61,28 @@ const Footer = ({ footerData }) => {
                                     </a>
                                 </li>
                             );
-                        })} */}
+                        })}
                     </ul>
-                </div>
-                <div className="align-self-center d-flex footer-contact">
-                    <p>{footerData.about}</p>
-                    {/* <h4>Contact Us</h4> */}
-                    {/* <p>Email: <a href={`mailto:${footerData.contact.email}`}>{footerData.contact.email}</a></p>
-                    <p>Phone: <a href={`tel:${footerData.contact.phone}`}>{footerData.contact.phone}</a></p> */}
+                </div> */}
+                <div className="col-12 col-lg-6 p-lg-0 p-5
+                    d-flex align-items-start justify-content-center flex-column">
+                        <div className='d-flex'>
+                            <div className='about'>{footerData.about}</div>
+                        </div>
+                        <div className=''>
+
+                            <strong>Contact Us</strong>
+                            <div>
+                                <span style={{lineHeight: 1, fontWeight: 500}}>Email: </span>
+                                <strong>
+
+                                <a style={{textTransform: 'none', color: 'black'}} href={`mailto:${footerData.contact.email}`}>
+                                    {footerData.contact.email}</a>
+                                </strong>
+                            </div>
+                        </div>
+                        {/* <p>Phone: <a href={`tel:${footerData.contact.phone}`}>{footerData.contact.phone}</a></p> */} 
+                    
                 </div>
             </div>
         </footer>
