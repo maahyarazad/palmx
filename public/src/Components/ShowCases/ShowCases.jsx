@@ -1,8 +1,12 @@
 import { LuSquareArrowUpRight } from "react-icons/lu";
 import { IoMdClose } from "react-icons/io";
-import Angel from "../../Assets/angel.png";
 import React, { useState, useRef, useEffect } from "react";
+import Angel from "../../Assets/angel.png";
+import difa from "../../Assets/difa.png";
+import expert from "../../Assets/expert.png";
 import WhiteReward from "../../Assets/whitereward.png";
+import gec_mobile from "../../Assets/gec-mobile.png";
+import ifza from "../../Assets/ifza.png";
 import './ShowCases.css';
 const ShowCases = () => {
 
@@ -42,49 +46,198 @@ const ShowCases = () => {
     return (
         <>
 
-            <div className="d-flex w-100 show-case">
-                <div className="show-case-container d-flex flex-column">
-                    <img src={Angel} alt="Angel Logo" />
-                    <div className="info-panel d-flex">
-                        <div className="align-self-end">
+            <div className="row w-100 show-case">
 
-                            <p> Website</p>
-                            <a onClick={(e) => handleOpen(e)} className="a-button" src="https://www.angels-bureau.com/">
-                                Angel Bureau
-                            </a>
+                <div className="col-6">
 
+                    <div className="show-case-container d-flex flex-column">
+                        <img src={WhiteReward} alt="White Reward" />
+                        <div className="info-panel d-flex">
+                            <div className="align-self-end">
+
+                                <p className="text-dark">
+                                    <strong>
+
+                                       Website
+                                    </strong>
+                                    </p>
+                                <a onClick={(e) => handleOpen(e)} className="a-button" src="https://www.whitereward.com/">
+                                     <strong>
+
+                                    White Reward
+                                     </strong>
+                                </a>
+                            </div>
+
+                            <div className="align-self-end">
+
+                                <a target="_blank" href="https://www.whitereward.com/" className="a-link">
+                                    <LuSquareArrowUpRight size={30} />
+                                </a>
+                            </div>
                         </div>
 
-                        <div className="align-self-end">
-
-                            <a target="_blank" href="https://www.angels-bureau.com/" className="a-link">
-                                <LuSquareArrowUpRight size={30} />
-                            </a>
-                        </div>
                     </div>
 
                 </div>
+                <div className="col-6">
+                    <div className="show-case-container d-flex flex-column">
+                        <img src={Angel} alt="Angel Bureau" />
+                        <div className="info-panel d-flex">
+                            <div className="align-self-end">
 
-                <div className="show-case-container d-flex flex-column">
-                    <img src={WhiteReward} alt="White Reward" />
-                    <div className="info-panel d-flex">
-                        <div className="align-self-end">
+                                <p className="text-dark">
+                                    <strong>
 
-                            <p> Website</p>
-                            <a onClick={(e) => handleOpen(e)} className="a-button" src="https://www.whitereward.com/">
-                                White Reward
-                            </a>
+                                       Website
+                                    </strong>
+                                    </p>
+                                <a onClick={(e) => handleOpen(e)} className="a-button" src="https://www.angels-bureau.com/">
+                                     <strong>
+
+                                    Angel Bureau
+                                     </strong>
+                                </a>
+
+                            </div>
+
+                            <div className="align-self-end">
+
+                                <a target="_blank" href="https://www.angels-bureau.com/" className="a-link">
+                                    <LuSquareArrowUpRight size={30} />
+                                </a>
+                            </div>
                         </div>
 
-                        <div className="align-self-end">
-
-                            <a target="_blank" href="https://www.whitereward.com/" className="a-link">
-                                <LuSquareArrowUpRight size={30} />
-                            </a>
-                        </div>
                     </div>
-
                 </div>
+
+                <div className="col-6">
+                    <div className="show-case-container d-flex flex-column">
+                        <img src={difa} alt="DIFA" />
+                        <div className="info-panel d-flex">
+                            <div className="align-self-end">
+
+                                <p className="text-dark">
+                                    <strong>
+
+                                       Website
+                                    </strong>
+                                    </p>
+                                <a onClick={(e) => handleOpen(e)} className="a-button" src="https://https://www.difa.agency/">
+                                     <strong>
+
+                                   DIFA
+                                     </strong>
+                                </a>
+
+                            </div>
+
+                            <div className="align-self-end">
+
+                                <a target="_blank" href="https://https://www.difa.agency/" className="a-link">
+                                    <LuSquareArrowUpRight size={30} />
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div className="col-6">
+                    <div className="show-case-container d-flex flex-column">
+                        <img src={expert} alt="Expert Circle" />
+                        <div className="info-panel d-flex">
+                            <div className="align-self-end">
+
+                                 <p className="text-dark">
+                                    <strong>
+
+                                       Website
+                                    </strong>
+                                    </p>
+                                <a onClick={(e) => handleOpen(e)} className="a-button" src="https://www.german-emirates-club.com/gec-events/expert">
+                                     <strong>
+
+                                   Expert Circle
+                                     </strong>
+                                </a>
+
+                            </div>
+
+                            <div className="align-self-end">
+
+                                <a target="_blank" href="https://www.german-emirates-club.com/gec-events/expert" className="a-link">
+                                    <LuSquareArrowUpRight size={30} />
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                
+                <div className="col-6">
+                    <div className="show-case-container d-flex flex-column">
+                        <img src={gec_mobile} alt="GEC Mobile" />
+                        <div className="info-panel d-flex">
+                            <div className="align-self-end">
+
+                                 <p className="text-dark">
+                                    <strong>
+
+                                        Mobile Application
+                                    </strong>
+                                    </p>
+                                <a className="a-button" src="https://play.google.com/store/apps/details?id=com.buenapublica.GECRewards&hl=en">
+                                 <strong>
+
+                                   GEC Mobile
+                                 </strong>
+                                </a>
+
+                            </div>
+
+                            <div className="align-self-end">
+
+                                <a target="_blank" href="https://play.google.com/store/apps/details?id=com.buenapublica.GECRewards&hl=en" className="a-link">
+                                    <LuSquareArrowUpRight size={30} />
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div className="col-6">
+                    <div className="show-case-container d-flex flex-column">
+                        <img src={ifza} alt="IFZA Elite" />
+                        <div className="info-panel d-flex">
+                            <div className="align-self-end">
+
+                                <p className="text-dark">
+                                    <strong>
+                                        Mobile Application
+                                    </strong>
+                                    </p>
+                                <a  className="a-button" src="https://play.google.com/store/apps/details?id=com.root.ifza&hl=en">
+                                <strong>
+
+                                   IFZA Elite
+                                </strong>
+                                </a>
+
+                            </div>
+
+                            <div className="align-self-end">
+
+                                <a target="_blank" href="https://play.google.com/store/apps/details?id=com.root.ifza&hl=en" className="a-link">
+                                    <LuSquareArrowUpRight size={30} />
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
 
             <div>
