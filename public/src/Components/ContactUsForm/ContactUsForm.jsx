@@ -117,7 +117,8 @@ const ContactForm = ({ siteData, sectionId }) => {
                                         id="attachment"
                                         name="attachment"
                                         className="d-none"
-                                        accept=".doc, .pdf, .csv, .xlsx, .zip, .docx, .md"
+                                        accept=".pdf, .doc, .docx, .xls, .xlsx, .csv, .ppt, .pptx, .md, .txt, .odt, .ods, .odp, .rtf"
+
                                         onChange={(e) => handleFileChange(e, setFieldValue)}
                                     />
 

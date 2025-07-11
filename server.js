@@ -1,7 +1,6 @@
 const express = require('express');
 const fs = require('fs');
-const csv = require('csv-parser');
-const { stringify } = require("csv-stringify");
+const { fromFile } = require('file-type');
 const path = require('path');
 const cors = require('cors');
 const multer = require('multer')
@@ -16,6 +15,28 @@ const { sendRequestConfirmationEmail, sendAdminNotificationEmail } = require('./
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, "public")));
 
+const ALLOWED_MIME_TYPES = [
+  'application/pdf', // pdf
+  'application/msword', // doc
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document', // docx
+  'application/vnd.ms-excel', // xls
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', // xlsx
+  'application/vnd.ms-powerpoint', // ppt
+  'application/vnd.openxmlformats-officedocument.presentationml.presentation', // pptx
+  'text/plain', // txt
+  'text/csv', // csv
+  'application/rtf', // rtf
+  'application/zip' // zip
+];
+
+
+// function fileFilter(req, file, cb) {
+//   if (ALLOWED_MIME_TYPES.includes(file.mimetype)) {
+//     cb(null, true);
+//   } else {
+//     cb(new Error('Unsupported file type'), false);
+//   }
+// }
 
 // Multer
 const uploadDir = path.join(__dirname, '/uploads');
@@ -31,7 +52,8 @@ const storage = multer.diskStorage({
   }
 });
 
-const upload = multer({ storage });
+const upload = multer({ storage, limits: { fileSize: 5 * 1024 * 1024 } }); // 5MB max
+
 
 
 //Route to serve your main HTML file
@@ -84,6 +106,15 @@ app.post('/api/contact-us', upload.single('attachment'), async (req, res) => {
         const { name, email, message } = req.body;
 
         if (req.file !== undefined && req.file !== null) {
+            const attachfilePath = path.join(uploadDir, req.file.filename);
+           const mimeType = req.file.mimetype;
+           const fileTypeResult = await fromFile(attachfilePath);
+
+            if (!fileTypeResult || !ALLOWED_MIME_TYPES.includes(fileTypeResult.mime)) {
+                fs.unlinkSync(attachfilePath); // Delete invalid file
+                return res.status(400).json({ error: 'File content does not match expected type.' });
+            }
+
             attachment = {
                 originalName: req.file.originalname,
                 storedName: req.file.filename,
