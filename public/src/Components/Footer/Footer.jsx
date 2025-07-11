@@ -27,7 +27,7 @@ const Footer = ({ footerData }) => {
 
     return (
         <footer className="footer">
-            <div className="row">
+            <div className="row w-100">
                 <div className="col-12 col-lg-6">
                     <div className='d-flex justify-content-lg-center justify-content-start ps-lg-0 ps-5'>
 
