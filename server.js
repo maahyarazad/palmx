@@ -1,6 +1,6 @@
 const express = require('express');
 const fs = require('fs');
-const { fromFile } = require('file-type');
+const { fromFile, fromBuffer } = require('file-type');
 const path = require('path');
 const cors = require('cors');
 const multer = require('multer')
@@ -10,6 +10,8 @@ app.use(express.json());
 const port = process.env.PORT || 5000;
 const mime = require('mime-types');
 const generateQRWithText = require('./services/qrGenerator');
+const isTextFile = require('istextorbinary').isText;
+
 
 const { sendRequestConfirmationEmail, sendAdminNotificationEmail } = require('./services/emailService');
 // Serve static files from the 'public' directory
@@ -30,29 +32,19 @@ const ALLOWED_MIME_TYPES = [
 ];
 
 
-// function fileFilter(req, file, cb) {
-//   if (ALLOWED_MIME_TYPES.includes(file.mimetype)) {
-//     cb(null, true);
-//   } else {
-//     cb(new Error('Unsupported file type'), false);
-//   }
-// }
+// fallback MIME types
+const FALLBACK_MIME_TYPES = {
+  csv: 'text/csv',
+  txt: 'text/plain',
+};
+
 
 // Multer
 const uploadDir = path.join(__dirname, '/uploads');
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, uploadDir);
-  },
-  filename: function (req, file, cb) {
-    const ext = path.extname(file.originalname);
-    const uniqueName = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    cb(null, uniqueName + ext);
-  }
-});
-
-const upload = multer({ storage, limits: { fileSize: 5 * 1024 * 1024 } }); // 5MB max
+const upload = multer({ 
+    storage: multer.memoryStorage()
+    , limits: { fileSize: 5 * 1024 * 1024 } }); // 5MB max
 
 
 
@@ -102,27 +94,50 @@ app.post('/api/contact-us', upload.single('attachment'), async (req, res) => {
             fs.writeFileSync(filePath, JSON.stringify([], null, 2), 'utf-8');
         }
 
-        let attachment = null;
         const { name, email, message } = req.body;
 
-        if (req.file !== undefined && req.file !== null) {
-            const attachfilePath = path.join(uploadDir, req.file.filename);
-           const mimeType = req.file.mimetype;
-           const fileTypeResult = await fromFile(attachfilePath);
+        let attachment = null;
 
-            if (!fileTypeResult || !ALLOWED_MIME_TYPES.includes(fileTypeResult.mime)) {
-                fs.unlinkSync(attachfilePath); // Delete invalid file
-                return res.status(400).json({ error: 'File content does not match expected type.' });
+        const fileBuffer = req.file?.buffer;
+
+        if(fileBuffer){
+            const type = await fromBuffer(fileBuffer);
+    
+            let mimeType = type?.mime;
+    
+            if (!mimeType) {
+            // Check if the file is plain text
+                const isText = isTextFile(null, fileBuffer);
+    
+                if (isText){
+                    const originalExt = path.extname(req.file.originalname).toLowerCase().replace('.', '');
+                    mimeType = FALLBACK_MIME_TYPES[originalExt] || 'text/plain';
+                }
             }
-
-            attachment = {
-                originalName: req.file.originalname,
-                storedName: req.file.filename,
-                mimetype: req.file.mimetype,
-                size: req.file.size,
-            };
+    
+            // Validation goes here
+            if (!ALLOWED_MIME_TYPES.includes(mimeType)) {
+                return res.status(400).json({ error: 'Invalid file type.' });
+            }
+    
+            if (req.file !== undefined && req.file !== null) {
+    
+                 // Save file after validation
+                const uniqueName = `${Date.now()}-${Math.round(Math.random() * 1e9)}${path.extname(req.file.originalname)}`;
+                const targetPath = path.join(uploadDir, uniqueName);
+                fs.writeFileSync(targetPath, fileBuffer);
+    
+    
+                attachment = {
+                    originalName: req.file.originalname,
+                    storedName: uniqueName,
+                    mimetype: req.file.mimetype,
+                    size: req.file.size,
+                };
+            }
         }
 
+    
 
         const newEntry = {
             name,
@@ -133,10 +148,12 @@ app.post('/api/contact-us', upload.single('attachment'), async (req, res) => {
         };
 
         const data = fs.readFileSync(filePath, 'utf-8');
-        const requestData = JSON.parse(data);
-        requestData.push(newEntry);
-        fs.writeFileSync(filePath, JSON.stringify(requestData, null, 2), 'utf-8');
 
+        const requestData = JSON.parse(data);
+
+        requestData.push(newEntry);
+
+        fs.writeFileSync(filePath, JSON.stringify(requestData, null, 2), 'utf-8');
 
         await sendRequestConfirmationEmail(newEntry);
 

@@ -54,6 +54,8 @@ const ContactForm = ({ siteData, sectionId }) => {
         }
 
         try {
+            
+
             const response = await axios.post(`${server_endpoint}/api/contact-us`, form, {
                 headers: {
                     "Content-Type": "multipart/form-data",
@@ -64,8 +66,16 @@ const ContactForm = ({ siteData, sectionId }) => {
             setAttachedFileName("");;
             resetForm();
         } catch (error) {
-            debugger;
-            toast.error(error.message)
+            console.error("Submission error:", error);
+
+            // Safe access for backend-defined error
+            const errorMessage =
+                error?.response?.data?.error ||
+                error?.response?.data?.message ||
+                error?.message ||
+                "Something went wrong. Please try again.";
+
+            toast.error(errorMessage);
         } finally {
             setSubmitting(false);
         }
@@ -142,7 +152,7 @@ const ContactForm = ({ siteData, sectionId }) => {
                                     {attachedFileName && (
                                         <div className="attached-file-name text-white d-flex align-items-center" style={{ marginTop: "0.5em" }}>
                                             <span>
-                                                {siteData.form.selectedFile}: <strong>{attachedFileName}</strong>
+                                               <strong> Selected File: {attachedFileName}</strong>
                                             </span>
                                             
                                             <button

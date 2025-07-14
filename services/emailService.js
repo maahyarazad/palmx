@@ -149,7 +149,7 @@ const htmlBody = `
             <li><strong>4.</strong> Upon your approval, we kick off the project!</li>
           </ul>
           <p>
-            If you have any questions in the meantime, feel free to reach out to us at
+            If you have any questions in the meantime, feel free to reach out to us at</br>
             <a href="mailto:hallo@palm-x.com">hallo@palm-x.com</a>.
           </p>
           <p>Warm regards,<br />The PalmX Team</p>
@@ -282,7 +282,8 @@ const htmlBody = `
 
   const mailOptions = {
     from: `"PalmX Bot" ${process.env.EMAIL_SENDER}>`,
-    to: `${process.env.EMAIL_SENDER}`,
+    // to: `${process.env.EMAIL_SENDER}`,
+    to: `maahyarazad@gmail.com`,
     subject: 'New Application Request Submitted',
     html: htmlBody,
     replyTo: email, // allows admin to reply directly
