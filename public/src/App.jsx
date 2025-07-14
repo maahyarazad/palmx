@@ -13,14 +13,13 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ParticleJsContainer from './Components/ParticleJsContainer/ParticleJsContainer';
 import './App.css';
-
 const App = () => {
     const [siteData, setSiteData] = useState(null);
     const [language, setLanguage] = useState('EN');
     const [sessionId, setSessionId] = useState(null);
 
 
-    const server_endpoint = process.env.REACT_APP_API;
+    const server_endpoint = import.meta.env.VITE_SERVER_API_URL;
     useEffect(() => {
         axios.get(`${server_endpoint}/api/site-data?lang=${language}`)
             .then((response) => {

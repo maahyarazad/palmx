@@ -5,6 +5,10 @@
   --logo-secondary-collor: #5B2330;
   --secondary-contracts-color: #06D6A0;
   --third-contracts-color: #EF476F;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -12,11 +16,6 @@ body {
   font-family: 'FigtreeVF', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
 
 
@@ -32,9 +31,3 @@ code {
   box-shadow: -2px 3px 8px white;
     transition: all 100ms ease-in-out;
 }
-
-
-
-
-
-

@@ -8,7 +8,7 @@ import './ContactUsForm.css';
 import { Paperclip } from 'lucide-react';
 import { toast } from 'react-toastify';
 import { IoMdClose } from "react-icons/io";
-const server_endpoint = process.env.REACT_APP_API;
+const server_endpoint = import.meta.env.VITE_SERVER_API_URL;
 const ContactForm = ({ siteData, sectionId }) => {
 
 
