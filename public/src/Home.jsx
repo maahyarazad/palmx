@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import HomeSlider from './Components/HomeSlider/HomeSlider';
 import ServiceGrid from './Components/ServiceGrid/ServiceGrid';
-import gsap from 'gsap'
 import TestimonialCarousel from './Components/TestemonialCarousel/TestemonialCarousel';
 import ContactUsForm from './Components/ContactUsForm/ContactUsForm'
 import TypeWriter from './Components/TypeWriter/TypeWriter';

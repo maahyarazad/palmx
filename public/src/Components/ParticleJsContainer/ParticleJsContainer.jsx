@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState, useRef } from "react";
-import Particles from "react-particles";
 import { loadFull } from "tsparticles";
 import bgDesktop from '../../../src/Assets/bg-new.png'
 import bgMobile from '../../../src/Assets/bg-1.png'
