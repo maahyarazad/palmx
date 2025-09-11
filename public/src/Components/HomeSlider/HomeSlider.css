@@ -73,7 +73,7 @@
 }
 
 .home-slider.show .slider-content .slider-text{
-    transition-delay: 0.2s;
+    transition-delay: 0.01s;
     transform: translateX(0);
     opacity: 1 !important;
 }
@@ -86,7 +86,7 @@
 }
 
 .home-slider.show .slider-content .button-wrapper{
-    transition-delay: 0.2s;
+    transition-delay: 0.01s;
     transform: translateX(0);
     opacity: 1 !important;
 }

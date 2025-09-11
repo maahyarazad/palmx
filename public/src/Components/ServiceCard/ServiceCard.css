@@ -1,11 +1,8 @@
 .iot-card {
     display: block;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background: rgba(255, 255, 255, 0.8);
-    /* backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px); */
     padding: 1.5rem;
     text-decoration: none;
     overflow: hidden;
@@ -25,10 +22,15 @@
 }
 
 .iot-card--hover:hover {
-    background-image: linear-gradient(0deg, var(--primary-color), var(--primary-contrast-color) );
+    background-image: linear-gradient(0deg, var(--primary-color), var(--primary-contrast-color));
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
     transform: scale(1.05);
-    transition: all 0.1s ease-in-out;
+}
+
+.iot-card--hover:hover a.iot-card__link {
+   
+    color: white !important;
+  
 }
 
 .iot-card--hover:hover .iot-card__list li,
@@ -36,223 +38,87 @@
 .iot-card--hover:hover .iot-card__title,
 .iot-card--hover:hover p,
 .iot-card--hover:hover .iot-card__link {
-    color: white !important;
-
+    color: white ;
+    
 }
 
+/* IMAGE animation */
 .iot-card__image {
     margin-bottom: 1rem;
-    color: var(--primary-color) !important;
+    color: var(--primary-color);
     object-fit: cover;
-    opacity: 0 !important;
+    opacity: 0;
     transform: translateY(-100%);
-    transition: transform 0.5s ease, opacity 0.5s ease,
+    transition: transform 0.5s ease, opacity 0.5s ease;
 }
-
 
 .cart-container.show .iot-card__image {
     transform: translateY(0);
-    opacity: 1 !important;
+    opacity: 1;
 }
 
-/* Only apply delays on desktop */
-@media (min-width: 1024px) {
-    .service-card-container>.col-12:nth-of-type(1) .cart-container.show .iot-card__image {
-        transition-delay: 0s;
-        opacity: 1 !important;
-    }
-
-    .service-card-container>.col-12:nth-of-type(2) .cart-container.show .iot-card__image {
-        transition-delay: 0.2s;
-        opacity: 1 !important;
-    }
-
-    .service-card-container>.col-12:nth-of-type(3) .cart-container.show .iot-card__image {
-        transition-delay: 0.4s;
-        opacity: 1 !important;
-    }
-
-    .service-card-container>.col-12:nth-of-type(4) .cart-container.show .iot-card__image {
-        transition-delay: 0s;
-        opacity: 1 !important;
-    }
-
-    .service-card-container>.col-12:nth-of-type(5) .cart-container.show .iot-card__image {
-        transition-delay: 0.2s;
-        opacity: 1 !important;
-    }
-
-    .service-card-container>.col-12:nth-of-type(6) .cart-container.show .iot-card__image {
-        transition-delay: 0.4s;
-        opacity: 1 !important;
-    }
-
-    .service-card-container>.col-12:nth-of-type(7) .cart-container.show .iot-card__image {
-        transition-delay: 0s;
-        opacity: 1 !important;
-    }
-
-    .service-card-container>.col-12:nth-of-type(8) .cart-container.show .iot-card__image {
-        transition-delay: 0.2s;
-        opacity: 1 !important;
-    }
-
-    .service-card-container>.col-12:nth-of-type(9) .cart-container.show .iot-card__image {
-        transition-delay: 0.4s;
-        opacity: 1 !important;
-    }
+a.iot-card__link {
+    display: inline-flex;    /* custom style */
+    align-items: center;
+    margin-top: 1rem;
+    color: var(--primary-color) !important;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none !important;
 }
 
-
+/* TITLE animation */
 .iot-card__title {
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
-    opacity: 0 !important;
+    opacity: 0;
     transform: translateX(-100%);
-    transition: transform 0.5s ease, opacity 0.5s ease,
+    transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .cart-container.show .iot-card__title {
     transform: translateX(0);
-    opacity: 1 !important;
+    opacity: 1;
 }
 
-/* Only apply delays on desktop */
-@media (min-width: 1024px) {
-    .service-card-container>.col-12:nth-of-type(1) .cart-container.show .iot-card__title {
-        transition-delay: 0s;
-        opacity: 1 !important;
-    }
-
-    .service-card-container>.col-12:nth-of-type(2) .cart-container.show .iot-card__title {
-        transition-delay: 0.2s;
-        opacity: 1 !important;
-    }
-
-    .service-card-container>.col-12:nth-of-type(3) .cart-container.show .iot-card__title {
-        transition-delay: 0.4s;
-        opacity: 1 !important;
-    }
-
-    .service-card-container>.col-12:nth-of-type(4) .cart-container.show .iot-card__title {
-        transition-delay: 0s;
-        opacity: 1 !important;
-    }
-
-    .service-card-container>.col-12:nth-of-type(5) .cart-container.show .iot-card__title {
-        transition-delay: 0.2s;
-        opacity: 1 !important;
-    }
-
-    .service-card-container>.col-12:nth-of-type(6) .cart-container.show .iot-card__title {
-        transition-delay: 0.4s;
-        opacity: 1 !important;
-    }
-
-    .service-card-container>.col-12:nth-of-type(7) .cart-container.show .iot-card__title {
-        transition-delay: 0s;
-        opacity: 1 !important;
-    }
-
-    .service-card-container>.col-12:nth-of-type(8) .cart-container.show .iot-card__title {
-        transition-delay: 0.2s;
-        opacity: 1 !important;
-    }
-
-    .service-card-container>.col-12:nth-of-type(9) .cart-container.show .iot-card__title {
-        transition-delay: 0.4s;
-        opacity: 1 !important;
-    }
+.iot-card__text > a {
+    color: red !important;
 }
 
-
-
-
+/* TEXT animation */
 .iot-card__text {
+
     font-size: 1em;
-    opacity: 0 !important;
+    opacity: 0;
     transform: translateY(100%);
-    transition: transform 0.5s ease, opacity 0.5s ease,
+    transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .cart-container.show .iot-card__text {
     transform: translateY(0);
-    opacity: 1 !important;
+    opacity: 1;
 }
 
-/* Only apply delays on desktop */
+/* Desktop staggered animation */
 @media (min-width: 1024px) {
-    .service-card-container>.col-12:nth-of-type(1) .cart-container.show .iot-card__text {
+    .service-card-container > .col-12:nth-of-type(1) .cart-container.show .iot-card__image,
+    .service-card-container > .col-12:nth-of-type(1) .cart-container.show .iot-card__title,
+    .service-card-container > .col-12:nth-of-type(1) .cart-container.show .iot-card__text {
         transition-delay: 0s;
-        opacity: 1 !important;
     }
 
-    .service-card-container>.col-12:nth-of-type(2) .cart-container.show .iot-card__text {
+    .service-card-container > .col-12:nth-of-type(2) .cart-container.show .iot-card__image,
+    .service-card-container > .col-12:nth-of-type(2) .cart-container.show .iot-card__title,
+    .service-card-container > .col-12:nth-of-type(2) .cart-container.show .iot-card__text {
         transition-delay: 0.2s;
-        opacity: 1 !important;
     }
 
-    .service-card-container>.col-12:nth-of-type(3) .cart-container.show .iot-card__text {
+    .service-card-container > .col-12:nth-of-type(3) .cart-container.show .iot-card__image,
+    .service-card-container > .col-12:nth-of-type(3) .cart-container.show .iot-card__title,
+    .service-card-container > .col-12:nth-of-type(3) .cart-container.show .iot-card__text {
         transition-delay: 0.4s;
-        opacity: 1 !important;
     }
 
-    .service-card-container>.col-12:nth-of-type(4) .cart-container.show .iot-card__text {
-        transition-delay: 0s;
-        opacity: 1 !important;
-    }
-
-    .service-card-container>.col-12:nth-of-type(5) .cart-container.show .iot-card__text {
-        transition-delay: 0.2s;
-        opacity: 1 !important;
-    }
-
-    .service-card-container>.col-12:nth-of-type(6) .cart-container.show .iot-card__text {
-        transition-delay: 0.4s;
-        opacity: 1 !important;
-    }
-
-    .service-card-container>.col-12:nth-of-type(7) .cart-container.show .iot-card__text {
-        transition-delay: 0s;
-        opacity: 1 !important;
-    }
-
-    .service-card-container>.col-12:nth-of-type(8) .cart-container.show .iot-card__text {
-        transition-delay: 0.2s;
-        opacity: 1 !important;
-    }
-
-    .service-card-container>.col-12:nth-of-type(9) .cart-container.show .iot-card__text {
-        transition-delay: 0.4s;
-        opacity: 1 !important;
-    }
-}
-
-
-
-.iot-card__list {
-    list-style-type: none;
-    padding-left: 0.2rem;
-    margin-top: 0.5rem;
-
-}
-
-.check-icon {
-    padding: 0 2px 0 2px;
-    color: var(--primary-color) !important;
-    transform: scale(1.5);
-}
-
-.iot-card__link {
-    margin-top: 1rem;
-    color: var(--primary-color);
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    text-decoration: none;
-}
-
-.iot-card__link span {
-    margin-left: 0.25rem;
+    /* Repeat as needed for 4,5,6,… */
 }

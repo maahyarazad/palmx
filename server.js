@@ -7,7 +7,7 @@ const multer = require('multer')
 const app = express();
 app.use(cors());
 app.use(express.json());
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5605;
 const mime = require('mime-types');
 const generateQRWithText = require('./services/qrGenerator');
 const isTextFile = require('istextorbinary').isText;
@@ -167,6 +167,15 @@ app.post('/api/contact-us', upload.single('attachment'), async (req, res) => {
 
 });
 
+
+// Route to serve your main HTML file
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 
 
 app.use((req, res, next) => {
