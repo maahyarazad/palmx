@@ -1,7 +1,23 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
-// https://vite.dev/config/
-export default defineConfig({
-  plugins: [react()],
-})
+// https://vitejs.dev/config/
+export default defineConfig(({ mode }) => ({
+  plugins: [
+    //visualizer({ open: true }),
+    react({
+      jsxRuntime: "automatic",
+    }),
+  ],
+  define: {
+    global: "window",
+  },
+  optimizeDeps: {
+    include: ["buffer", "process"],
+  },
+
+  server: {
+    port: 5605,
+  },
+  base: "/",
+}));

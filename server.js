@@ -14,8 +14,13 @@ const isTextFile = require('istextorbinary').isText;
 
 
 const { sendRequestConfirmationEmail, sendAdminNotificationEmail } = require('./services/emailService');
-// Serve static files from the 'public' directory
-app.use(express.static(path.join(__dirname, "public")));
+
+const root_path = __dirname;
+
+
+app.use(express.static(path.join(root_path, "public")));
+
+
 
 const ALLOWED_MIME_TYPES = [
   'application/pdf', // pdf
@@ -40,7 +45,7 @@ const FALLBACK_MIME_TYPES = {
 
 
 // Multer
-const uploadDir = path.join(__dirname, '/uploads');
+const uploadDir = path.join(root_path, '/uploads');
 
 const upload = multer({ 
     storage: multer.memoryStorage()
@@ -48,10 +53,6 @@ const upload = multer({
 
 
 
-//Route to serve your main HTML file
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
 
 
 app.get('/api/site-data', (req, res) => {
@@ -60,9 +61,9 @@ app.get('/api/site-data', (req, res) => {
     const lang = req.query.lang;
 
 
-    let filePath = path.join(__dirname, 'site-data.json');
+    let filePath = path.join(root_path, 'site-data.json');
     if (lang === "DE") {
-        filePath = path.join(__dirname, 'site-data-de.json');
+        filePath = path.join(root_path, 'site-data-de.json');
     }
 
     fs.readFile(filePath, 'utf-8', (err, data) => {
@@ -89,7 +90,7 @@ app.get('/api/site-data', (req, res) => {
 app.post('/api/contact-us', upload.single('attachment'), async (req, res) => {
 
     try {
-        const filePath = path.join(__dirname, 'request-data.json');
+        const filePath = path.join(root_path, 'request-data.json');
         if (!fs.existsSync(filePath)) {
             fs.writeFileSync(filePath, JSON.stringify([], null, 2), 'utf-8');
         }
@@ -168,13 +169,14 @@ app.post('/api/contact-us', upload.single('attachment'), async (req, res) => {
 });
 
 
+
 // Route to serve your main HTML file
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(root_path, "public","index.html"));
 });
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(root_path, "public","index.html"));
 });
 
 
